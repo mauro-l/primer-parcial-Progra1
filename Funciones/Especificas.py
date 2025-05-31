@@ -82,7 +82,6 @@ def mostrar_puntuacion(
 
     print(f"Participante Nro {indice + 1} {array_nombres[indice]}")
     print("==============================")
-
     for i in range(len(matriz_puntuajes[indice])):
         print(f"Puntuacion Jurado {i + 1}: {matriz_puntuajes[indice][i]}")
 
@@ -114,7 +113,7 @@ def mostrar_puntuaciones(matriz_puntuajes: list, array_nombres: list) -> bool:
         mostrar_puntuacion(matriz_puntuajes, array_nombres, i)
         suma_puntuacion = sumar_array(matriz_puntuajes, i)
         promedio = calcular_promedio(suma_puntuacion, len(matriz_puntuajes[i]))
-        print(f"Puntaje Promedio: {promedio}/10")
+        print(f"Puntaje Promedio: {promedio:.2f}/10")
     return True
 
 
@@ -141,7 +140,7 @@ def mostrar_participantes_promedio_menor(
         suma = sumar_array(matriz_puntuajes, i)
         promedio = calcular_promedio(suma, len(matriz_puntuajes[i]))
         if promedio < limite:
-            print(f"{i+1}) {array_nombres[i]} - Promedio: {promedio}")
+            print(f"{i+1}) {array_nombres[i]} - Promedio: {promedio:.2f}")
             encontrados = True
 
     if not encontrados:
@@ -165,14 +164,14 @@ def obtener_promedios_jurados(matriz_puntuajes: list) -> list:
 
     cantidad_participantes = len(matriz_puntuajes)
     cantidad_jurados = len(matriz_puntuajes[0])
-    promedios = []
+    promedios = [0] * cantidad_jurados
 
     for col in range(cantidad_jurados):
         suma = 0
         for fil in range(cantidad_participantes):
             suma += matriz_puntuajes[fil][col]
         promedio = calcular_promedio(suma, cantidad_participantes)
-        promedios.append(promedio)
+        promedios[col] = promedio
     return promedios
 
 

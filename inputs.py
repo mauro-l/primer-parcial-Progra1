@@ -109,7 +109,7 @@ def encontrar_participantes_promedios_iguales(
                     if son_iguales == False:  # Primera vez que encuentra iguales
                         son_iguales = True
                     print(
-                        f"{array_nombres[i]} y {array_nombres[j]} tienen el mismo promedio: {promedio_i}"
+                        f"{array_nombres[i]} y {array_nombres[j]} tienen el mismo promedio: {promedios[i]:.2f}"
                     )
 
         if son_iguales == False:

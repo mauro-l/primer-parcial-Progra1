@@ -86,6 +86,7 @@ def calcular_promedio(acumulador: float | int, contador: int) -> float | None:
     """
     if contador != 0:
         promedio = acumulador / contador
+        promedio = round(promedio, 2)
     else:
         promedio = None
 
@@ -168,8 +169,7 @@ def promedio_puntuaje_matriz(matriz_puntaje: list) -> list:
         contador = 0
         for col in range(len(matriz_puntaje[fil])):
             contador += matriz_puntaje[fil][col]
-            promedio_puntaje_participantes[fil] = calcular_promedio(
-                len(matriz_puntaje[fil]), contador
-            )
+            promedio = calcular_promedio(len(matriz_puntaje[fil]), contador)
+            promedio_puntaje_participantes[fil] = promedio
 
     return promedio_puntaje_participantes
