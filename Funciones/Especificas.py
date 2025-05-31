@@ -176,6 +176,8 @@ def obtener_promedios_jurados(matriz_puntuajes: list) -> list:
     return promedios
 
 
+# array_nombres = ["Ana", "Luis", "Pedro", "María", "Juan"]
+
 # matrizVaciaDePrueba = [             # matrizdePrueba = [
 #     [0, 0, 0],        # 0           #     [8, 5, 9],        #Participante 1
 #     [0, 0, 0],        # 1           #     [5, 7, 6],        #Participante 2

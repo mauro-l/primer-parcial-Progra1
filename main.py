@@ -44,6 +44,9 @@ puntuajes_cargados = False
 # 11. Salir
 
 mensaje_menu = "1.Cargar Nombres Participante\n2.Cargar puntaje del jurado\n3.Mostrar puntuaciones\n4.Ver participantes con promedio menor a 4%\n5.Ver participantes con promedio menor a 8%\n6.Ver promedio de puntuaciones de cada jurado\n7.Mostrar al Jurado más estricto\n8.Mostrar al Jurado más generoso\n9.Ver los Participantes con puntuaciones iguales\n10.Buscar participante por nombre\n11.Salir\n"
+mensaje_error_carga = (
+    "✖️  Debe cargar los participantes y las puntuaciones antes de ver los promedios."
+)
 
 while True:
     print(mensaje_menu)
@@ -58,7 +61,7 @@ while True:
             mostrar_array(array_nombres)
             participantes_cargados = True
         else:
-            print("✖️  Error al realizar la carga de nombres, intente nuevamente.\n")
+            print("Error al realizar la carga de nombres, intente nuevamente.\n")
     elif opcion == 2:
         respuesta_puntos = cargar_puntuaciones_jurado(matriz_puntuajes, array_nombres)
         if respuesta_puntos:
@@ -66,57 +69,48 @@ while True:
             mostrar_matriz(matriz_puntuajes)
             puntuajes_cargados = True
         else:
-            print(
-                "✖️  Error al realizar la carga de puntuaciones, intente nuevamente.\n"
-            )
+            print("Error al realizar la carga de puntuaciones, intente nuevamente.\n")
     elif opcion == 3:
         if not mostrar_puntuaciones(matriz_puntuajes, array_nombres):
-            print("✖️  Error al cargar los puntuajes, intente nuevamente.\n")
+            print(mensaje_error_carga)
     elif opcion == 4:
         if not (participantes_cargados and puntuajes_cargados):
-            print(
-                "✖️  Debe cargar los participantes y las puntuaciones antes de ver los promedios."
-            )
+            print(mensaje_error_carga)
         else:
             if not mostrar_participantes_promedio_menor(
                 matriz_puntuajes, array_nombres, 4
             ):
-                print("✖️  No se encontraron participantes con promedio menor a 4.")
+                print(mensaje_error_carga)
     elif opcion == 5:
         if not (participantes_cargados and puntuajes_cargados):
-            print(
-                "✖️  Debe cargar los participantes y las puntuaciones antes de ver los promedios."
-            )
+            print(mensaje_error_carga)
         else:
             if not mostrar_participantes_promedio_menor(
                 matriz_puntuajes, array_nombres, 8
             ):
-                print("✖️  No se encontraron participantes con promedio menor a 8")
+                print(mensaje_error_carga)
     elif opcion == 6:
         if not puntuajes_cargados:
-            print(
-                "✖️  Debe cargar las puntuaciones antes de ver los promedios por jurado."
-            )
+            print(mensaje_error_carga)
         else:
             mostrar_promedio_por_jurado(matriz_puntuajes)
     elif opcion == 7:
         if not puntuajes_cargados:
-            print(
-                "✖️  Debe cargar las puntuaciones antes de ver el jurado más estricto."
-            )
+            print(mensaje_error_carga)
         else:
             mostrar_jurados_mas_exigente(matriz_puntuajes)
     elif opcion == 8:
         if not puntuajes_cargados:
-            print(
-                "✖️  Debe cargar las puntuaciones antes de ver el jurado más generoso."
-            )
+            print(mensaje_error_carga)
         else:
             mostrar_jurado_mas_generoso(matriz_puntuajes)
     elif opcion == 9:
         print("CARGANDO NOTAS")
     elif opcion == 10:
-        print("CARGANDO NOTAS")
+        if not (participantes_cargados and puntuajes_cargados):
+            print(mensaje_error_carga)
+        else:
+            buscar_participantes(array_nombres, matriz_puntuajes)
     elif opcion == 11:
         print("Saliendo...")
         break

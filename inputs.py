@@ -80,10 +80,30 @@ def mostrar_jurado_mas_generoso(matriz_puntuajes: list) -> bool:
     return True
 
 
-""" elif not mayor_promedio:
-    indice_minimo = 0
-    menor_promedio = promedios[0]
-    for i in range(1, len(promedios)):
-        if promedios[i] < menor_promedio:
-            menor_promedio = promedios[i]
-            indice_minimo = i """
+# 10. Buscar participante por nombre
+def buscar_participantes(array_nombres: list, matriz_puntuajes: list) -> bool:
+    """
+    Busca un participante por nombre exacto y muestra sus datos si existe.
+
+    Args:
+        array_nombres (list): Lista con los nombres de los participantes.
+        matriz_puntuajes (list): Matriz con los puntajes de cada participante.
+
+    Returns:
+        bool: True si encontró el participante, False si no existe o hay error en los datos.
+    """
+    # Validación de datos
+    if not (validar_array(matriz_puntuajes) and validar_array(array_nombres)):
+        print("Error: Problemas con los datos de participantes o puntuaciones.\n")
+        return False
+
+    nombre_buscado = pedir_texto(
+        "Ingrese el nombre del participante a buscar: ", min_length=3
+    )
+    for i in range(len(array_nombres)):
+        if array_nombres[i] == nombre_buscado:
+            print("Participante encontrado:")
+            mostrar_puntuacion(matriz_puntuajes, array_nombres, i)
+            return True
+    print("Participante no encontrado")
+    return False
