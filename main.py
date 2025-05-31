@@ -23,9 +23,12 @@ from Funciones.Validaciones import *
 from Funciones.Especificas import *
 from inputs import *
 
-array_nombres = crear_array(3, None)
-promedio_puntuaje_jurado = crear_array(3, None)
-matriz_puntuajes = crear_matriz(2, 3, None)
+cantidad_participantes = 3
+cantidad_jurados = 3
+
+array_nombres = crear_array(cantidad_participantes, None)
+promedio_puntuaje_jurado = crear_array(cantidad_jurados, None)
+matriz_puntuajes = crear_matriz(cantidad_participantes, cantidad_jurados, None)
 
 participantes_cargados = False
 puntuajes_cargados = False
