@@ -164,7 +164,7 @@ def obtener_promedios_jurados(matriz_puntuajes: list) -> list:
 
     cantidad_participantes = len(matriz_puntuajes)
     cantidad_jurados = len(matriz_puntuajes[0])
-    promedios = [0] * cantidad_jurados
+    promedios = crear_array(cantidad_jurados, None)
 
     for col in range(cantidad_jurados):
         suma = 0

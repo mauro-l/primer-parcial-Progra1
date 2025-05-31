@@ -1,29 +1,10 @@
-# Se requiere un sistema que permita:
-# ● Registrar los nombres de los participantes (5 en total)
-# ● Registrar las puntuaciones que cada jurado otorga a cada participante
-# ● Procesar y mostrar diferentes informaciones relevantes a partir de los datos cargados
-# Cada participante debe almacenar la siguiente información:
-# ● Nombre del participante
-# ● Puntuación del Jurado 1
-# ● Puntuación del Jurado 2
-# ● Puntuación del Jurado 3
-
-# Se requiere lo siguiente:
-# 1. Cargar participantes: Ingresar los nombres de cinco participantes. Cada nombre
-# debe tener al menos 3 caracteres y solo contener letras y espacios.
-# 2. Cargar puntuaciones: Ingresar la puntuación de cada jurado para cada participante.
-# Las puntuaciones deben estar entre 1 y 10.
-# 3. Mostrar puntuaciones: Mostrar para cada participante: nombre, puntajes individuales
-# y promedio general. Usar formato claro y ordenado.
-
-
 import os
 from Funciones.Generales import *
 from Funciones.Validaciones import *
 from Funciones.Especificas import *
 from inputs import *
 
-cantidad_participantes = 3
+cantidad_participantes = 5
 cantidad_jurados = 3
 
 array_nombres = crear_array(cantidad_participantes, None)
