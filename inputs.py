@@ -80,6 +80,46 @@ def mostrar_jurado_mas_generoso(matriz_puntuajes: list) -> bool:
     return True
 
 
+def encontrar_participantes_promedios_iguales(
+    matriz_puntaje: list, array_nombres: list
+) -> bool:
+    """
+    Encuentra y muestra participantes que tienen promedios iguales.
+
+    Args:
+        matriz_puntaje (list): Matriz con los puntajes de cada participante
+        array_nombres (list): Array con los nombres de los participantes
+
+    Returns:
+        bool: True si encontró participantes con promedios iguales, False si no hay ninguno
+    """
+    if validar_array(matriz_puntaje) and validar_array(array_nombres):
+        promedios = promedio_puntuaje_matriz(matriz_puntaje)
+        son_iguales = False
+
+        print("Participantes con promedios iguales:")
+
+        # Comparamos cada participante con los demás
+        for i in range(len(promedios)):
+            for j in range(i + 1, len(promedios)):
+                promedio_i = round(promedios[i], 2)
+                promedio_j = round(promedios[j], 2)
+
+                if promedio_i == promedio_j:
+                    if son_iguales == False:  # Primera vez que encuentra iguales
+                        son_iguales = True
+                    print(
+                        f"{array_nombres[i]} y {array_nombres[j]} tienen el mismo promedio: {promedio_i}"
+                    )
+
+        if son_iguales == False:
+            print("No hay participantes con promedios iguales.")
+
+        return son_iguales
+    else:
+        return False
+
+
 # 10. Buscar participante por nombre
 def buscar_participantes(array_nombres: list, matriz_puntuajes: list) -> bool:
     """

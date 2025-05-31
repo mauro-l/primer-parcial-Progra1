@@ -23,7 +23,7 @@ from Funciones.Validaciones import *
 from Funciones.Especificas import *
 from inputs import *
 
-array_nombres = crear_array(2, None)
+array_nombres = crear_array(3, None)
 promedio_puntuaje_jurado = crear_array(3, None)
 matriz_puntuajes = crear_matriz(2, 3, None)
 
@@ -105,7 +105,10 @@ while True:
         else:
             mostrar_jurado_mas_generoso(matriz_puntuajes)
     elif opcion == 9:
-        print("CARGANDO NOTAS")
+        if not (participantes_cargados and puntuajes_cargados):
+            print(mensaje_error_carga)
+        else:
+            encontrar_participantes_promedios_iguales(matriz_puntuajes, array_nombres)
     elif opcion == 10:
         if not (participantes_cargados and puntuajes_cargados):
             print(mensaje_error_carga)

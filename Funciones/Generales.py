@@ -147,3 +147,29 @@ def pedir_texto(mensaje: str, min_length=1, max_length=500) -> str:
         if not validar_string(texto):
             continue
         return texto
+
+
+def promedio_puntuaje_matriz(matriz_puntaje: list) -> list:
+    """
+    Calcula el promedio de puntaje de cada participante basado en las
+    calificaciones de todos los jurados.
+
+    Args:
+        matriz_puntaje (list): Matriz con los puntajes de cada participante por jurado
+
+    Returns:
+        list: Array con el promedio de puntaje de cada participante
+    """
+
+    cantidad_filas = len(matriz_puntaje)
+    promedio_puntaje_participantes = crear_array(cantidad_filas, None)
+
+    for fil in range(len(matriz_puntaje)):
+        contador = 0
+        for col in range(len(matriz_puntaje[fil])):
+            contador += matriz_puntaje[fil][col]
+            promedio_puntaje_participantes[fil] = calcular_promedio(
+                len(matriz_puntaje[fil]), contador
+            )
+
+    return promedio_puntaje_participantes
